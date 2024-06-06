@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>Money Tracker App</title>
+    <style>
+      .delete-btn {
+        padding: 4px 8px;
+        font-size: 0.875rem;
+        background-color: red;
+        color: white;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        margin: 4px;
+        transition: background-color 0.3s, transform 0.2s;
+      }
+
+      .delete-btn:hover {
+        background-color: darkred;
+        transform: scale(1.05);
+      }
+
+      .delete-btn:focus {
+        outline: none;
+        box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gradient-to-br from-green-200 via-blue-200 to-purple-200 min-h-screen flex items-center justify-center p-4"
+  >
+    <div class="w-full max-w-4xl mx-auto">
+      <form
+        action="/add"
+        method="POST"
+        class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-indigo-500"
+      >
+        <h1 class="text-3xl font-bold text-center text-indigo-700 mb-6">
+          Money Tracker App
+        </h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="mb-4">
+            <label
+              for="category_select"
+              class="block text-gray-700 font-bold mb-2"
+              >Category:</label
+            >
+            <select
+              id="category_select"
+              name="category_select"
+              class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-400 focus:outline-none"
+            >
+              <option value="Expense">Expense</option>
+              <option value="Income">Income</option>
+            </select>
+          </div>
+          <div class="mb-4">
+            <label for="amount_input" class="block text-gray-700 font-bold mb-2"
+              >Amount:</label
+            >
+            <input
+              type="number"
+              id="amount_input"
+              name="amount_input"
+              class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-400 focus:outline-none"
+            />
+          </div>
+          <div class="mb-4">
+            <label for="info" class="block text-gray-700 font-bold mb-2"
+              >Info:</label
+            >
+            <input
+              type="text"
+              id="info"
+              name="info"
+              class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-400 focus:outline-none"
+            />
+          </div>
+          <div class="mb-4">
+            <label for="date_input" class="block text-gray-700 font-bold mb-2"
+              >Date:</label
+            >
+            <input
+              type="date"
+              id="date_input"
+              name="date_input"
+              class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-indigo-400 focus:outline-none"
+            />
+          </div>
+        </div>
+        <button
+          id="add_btn"
+          class="w-full bg-indigo-500 text-white font-bold py-2 px-4 rounded hover:bg-indigo-600 focus:ring-4 focus:ring-indigo-300 transition duration-300"
+        >
+          Add
+        </button>
+      </form>
+
+      <div class="expenses-list mt-8">
+        <h2 class="text-2xl font-bold text-center text-indigo-600 mb-6">
+          Expenses and Incomes List
+        </h2>
+        <div class="overflow-x-auto">
+          <table class="min-w-full bg-white rounded-lg shadow-lg">
+            <thead class="bg-indigo-500 text-white">
+              <tr>
+                <th class="py-3 px-6 text-center">Category</th>
+                <th class="py-3 px-6 text-center">Amount</th>
+                <th class="py-3 px-6 text-center">Info</th>
+                <th class="py-3 px-6 text-center">Date</th>
+                <th class="py-3 px-6 text-center">Delete</th>
+              </tr>
+            </thead>
+            <tbody id="expense-table-body" class="text-center"></tbody>
+            <tfoot class="bg-green-500 text-white">
+              <tr>
+                <td class="py-3 px-6 font-bold text-center">Total:</td>
+                <td
+                  id="total-amount"
+                  class="py-3 px-6 font-bold text-center"
+                ></td>
+                <td class="py-3 px-6 text-center"></td>
+                <td class="py-3 px-6 text-center"></td>
+                <td class="py-3 px-6 text-center"></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
